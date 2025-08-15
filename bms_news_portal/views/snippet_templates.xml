@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="main_snippets_9_3" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.block_shared_snippet"
+                   t-thumbnail="/bms_news_portal/static/src/imgages/project_image.png"/>
+            </xpath>
+        </template>
+
+        <template id="block_shared_snippet" name="Khối tin tức 9 - 3">
+            <section id="block_shared_snippet_selector" class="h-100 w-100 d-block">
+                <div class="container">
+                    <div class="row bg-white">
+                        <div class="col-lg-9 col-md-12 col-sm-12 oe_structure">
+                            <span class="tex-dark">Thông báo</span>
+                        </div>
+                        <div class="col-lg-3 col-sm-12 col-md-12 oe_structure">
+                            <span class="tex-dark">Tin tức mới</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+
+    </data>
+</odoo>

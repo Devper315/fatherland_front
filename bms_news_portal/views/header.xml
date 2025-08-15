@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="inherit_snippet_options_news_header" inherit_id="website.snippet_options"
+              name="Fatherland Front Header Menu">
+        <xpath expr="//div[@data-js='WebsiteLevelColor' and @data-selector='#wrapwrap > header']/we-select[@data-variable='header-template']"
+               position="inside">
+            <we-button title="Menu News Fatherland Front"
+                       data-name="header_default_opt"
+                       data-trigger="regular_header_visibility_opt"
+                       data-customize-website-views="bms_news_portal.news_header_template"
+                       data-customize-website-variable="'default'"
+                       data-img="/website/static/src/img/snippets_options/header_template_default.svg"/>
+        </xpath>
+    </template>
+
+    <template id="news_header_template" inherit_id="website.layout" name="News Header Template"
+              active="False">
+        <xpath expr="//header//nav" position="replace">
+            <div id="fatherland-front-header" class="container">
+                <a href="/" class="d-block w-100">
+                    <img src="/bms_news_portal/static/src/images/header.jpg" style="object-fit: contain"
+                         class="w-100"/>
+                </a>
+                <t t-call="website.navbar">
+                    <t t-set="_navbar_expand_class" t-valuef="navbar-expand-lg py-0"/>
+                    <div id="o_main_nav" class="menu-ff-body w-100">
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="h-100 align-items-center"/>
+                            <div class="px-3 menu home active pt-1 h-100">
+                                <a href="/">
+                                    <i class="fa fa-home fs-5"/>
+                                </a>
+                            </div>
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <div class="px-4 menu h-100 d-flex align-items-center">
+                                    <t t-call="website.submenu"/>
+                                </div>
+                            </t>
+                        </t>
+                    </div>
+                </t>
+
+                <div class="header-info px-3">
+                    <div class="marquee pt-2">
+                        <h5>
+                            <strong>
+                                Đoàn kết, kỷ cương, nâng cao chất lượng, thích ứng kịp thời vì Thủ đô văn minh,
+                                người dân hạnh phúc
+                            </strong>
+                        </h5>
+                    </div>
+                    <img src="/bms_news_portal/static/src/images/line.png"/>
+                    <div>
+                        <input placeholder="Từ khóa tìm kiếm" class="border-0 px-2"/>
+                    </div>
+                    <div class="btn-search">
+                        <i class="fa fa-search" aria-hidden="true"/>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="btn_top">-->
+<!--                <img src="/bms_news_portal/static/src/images/backTop.png"/>-->
+<!--            </div>-->
+        </xpath>
+    </template>
+
+</odoo>

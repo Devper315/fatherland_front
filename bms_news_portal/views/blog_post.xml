@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="dynamic_filter_template_blog_post_latest_news_2" name="Blog Card tin tức 2">
+        <div id="latest-news-2" class="container-fluid">
+            <t t-set="main_blog" t-value="records[0]['_record']"/>
+            <!--            <span t-esc="records[0]"/>-->
+            <t t-set="sub_blog_datas" t-value="records[1:6]"/>
+            <div class="latest-news-header">
+                <div class="mb-2">
+                    <a t-attf-href="/blog/#{main_blog.blog_id.id}" class="title" t-esc="main_blog.blog_id.name"/>
+                </div>
+                <div t-if="len(sub_blog_datas) > 5" class="btn-more">
+                    Thêm
+                    <i class="fa fa-angle-down fw-bold"/>
+                </div>
+            </div>
+            <div class="latest-news-body row my-3">
+                <t t-set="_cp" t-value="json.loads(main_blog.cover_properties)"/>
+                <div class="main-blog col-6 d-flex flex-column gap-3">
+                    <t t-set="main_blog_link" t-valuef="blog/#{main_blog.blog_id.id}/#{main_blog.id}"/>
+                    <t t-set="main_blog_create_date" t-value="main_blog.create_date.strftime('%d/%m/%Y')"/>
+                    <div style="height: 270px; overflow:hidden">
+                        <a class="main-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                           t-att-title="main_blog.name" t-att-href="main_blog_link"/>
+                    </div>
+                    <a class="main-title" t-esc="main_blog.name" t-att-title="main_blog.name"
+                       t-att-href="main_blog_link"/>
+                    <div class="statistics">
+                        <i class="fa fa-calendar me-2"/>
+                        <t t-esc="main_blog_create_date"/>
+                        -
+                        <t t-esc="main_blog.visits"/>
+                        lượt xem
+                    </div>
+                    <div class="teaser" t-esc="main_blog.teaser"/>
+                </div>
+                <div class="sub-blogs col-6 d-flex flex-column gap-2">
+                    <t t-set="index" t-value="0"/>
+                    <t t-foreach="sub_blog_datas" t-as="sub_blog_data">
+                        <t t-set="sub_blog" t-value="sub_blog_data['_record']"/>
+                        <t t-set="sub_blog_link" t-valuef="blog/#{sub_blog.blog_id.id}/#{sub_blog.id}"/>
+                        <t t-set="_cp" t-value="json.loads(sub_blog.cover_properties)"/>
+                        <div class="sub-blog">
+                            <div class="d-flex gap-2">
+                                <div class="sub-image-container">
+                                    <a class="sub-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                                       t-att-title="sub_blog.name" t-att-href="sub_blog_link"/>
+                                </div>
+                                <div class="sub-title">
+                                    <a t-esc="sub_blog.name" t-att-href="sub_blog_link"
+                                       t-att-title="sub_blog.name"/>
+                                </div>
+                            </div>
+                            <t t-if="index &lt; len(sub_blog_datas) - 1">
+                                <hr class="mb-1"/>
+                                <t t-set="index" t-value="index + 1"/>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            <div class="latest-news-footer mt-4"/>
+        </div>
+    </template>
+
+    <template id="dynamic_filter_template_blog_post_video_library" name="Thư viện video">
+        <div id="video-library" class="w-100">
+            <t t-set="main_video" t-value="records[0]['_record']"/>
+            <div class="video-library-title pb-2">
+                <a t-attf-href="/blog/#{main_video.blog_id.id}">Thư viện video</a>
+            </div>
+            <div class="main-video">
+                <t t-set="main_video_link" t-valuef="/blog/#{main_video.blog_id.id}/#{main_video.id}"/>
+                <t t-set="_cp" t-value="json.loads(main_video.cover_properties)"/>
+                <div class="main-video-image-container">
+                    <a class="main-video-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                       t-att-title="main_video.name" t-att-href="main_video_link"/>
+                    <a t-att-href="main_video_link">
+                        <div class="main-video-icon">
+                            <div class="play-animation"/>
+                            <i class="fa fa-play icon-play"/>
+                        </div>
+                    </a>
+                </div>
+                <div class="main-video-title-container py-2 px-3">
+                    <a t-att-title="main_video.name" t-att-href="main_video_link" t-esc="main_video.name"/>
+                </div>
+            </div>
+            <div class="sub-videos">
+                <t t-foreach="records[1:3]" t-as="sub_video_data">
+                    <t t-set="sub_video" t-value="sub_video_data['_record']"/>
+                    <t t-set="sub_video_link" t-valuef="/blog/#{sub_video.blog_id.id}/#{sub_video.id}"/>
+                    <t t-set="_cp" t-value="json.loads(sub_video.cover_properties)"/>
+                    <div class="sub-video py-2 row mx-0">
+                        <div class="col-5 pe-0">
+                            <div class="sub-video-image-container">
+                                <a class="sub-video-image"
+                                   t-attf-style="background-image: #{_cp.get('background-image')}"
+                                   t-att-title="sub_video.name" t-att-href="sub_video_link"/>
+                                <a t-att-href="sub_video_link">
+                                    <div class="sub-video-icon">
+                                        <div class="play-animation"/>
+                                        <i class="fa fa-play icon-play"/>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <a class="sub-video-title" t-esc="sub_video.name" t-att-title="sub_video.name"
+                               t-att-href="sub_video_link"/>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </template>
+
+    <template id="dynamic_filter_template_blog_post_image_library" name="Thư viện hình ảnh">
+        <div id="image-library">
+
+        </div>
+    </template>
+</odoo>

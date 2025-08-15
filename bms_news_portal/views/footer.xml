@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inherit_snippet_options_uit_footer" inherit_id="website.snippet_options"
+              name="Fatherland Front Footer">
+        <xpath expr="//div[@data-js='WebsiteLevelColor' and @data-selector='#wrapwrap > footer']/we-select[@data-variable='footer-template']"
+               position="inside">
+            <we-button title="Fatherland Front Footer"
+                       data-customize-website-views="bms_news_portal.fatherland_front_footer_template"
+                       data-customize-website-variable="'headline'"
+                       data-img="/website/static/src/img/snippets_options/footer_template_headline.svg"/>
+        </xpath>
+    </template>
+
+    <template id="fatherland_front_footer_template" inherit_id="website.layout" name="Fatherland Front Footer"
+              active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div class="bg-white">
+                <t t-set="imgSrc" t-value="'/bms_news_portal/static/src/images'"/>
+                <div id="fatherland-front-footer" class="container px-4">
+                    <div class="row py-4 px-3" style="background: #f9efe4">
+                        <div class="col-4 px-0">
+                            <span class="info-title">Ủy ban Mặt trận Tổ quốc Việt Nam - Thành phố Hà Nội</span>
+                            <div class="info-detail">
+                                <div class="d-flex gap-3">
+                                    <div>
+                                        <img t-attf-src="#{imgSrc}/map.png"/>
+                                    </div>
+                                    <div>Số 29, phố Lý Thường Kiệt, Quận Hoàn Kiếm, Hà Nội</div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div>
+                                        <img t-attf-src="#{imgSrc}/phone.png"/>
+                                    </div>
+                                    <div>Điện thoại: <a href="tel:(024) 39345384">(024) 39345384</a>;
+                                        Fax:
+                                        <a href="tel:38249080">38249080</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div>
+                                        <img t-attf-src="#{imgSrc}/mail.png"/>
+                                    </div>
+                                    <div>
+                                        <a href="mailto:tuyengiaomattranhanoi@gmail.com">
+                                            tuyengiaomattranhanoi@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div>
+                                        <img t-attf-src="#{imgSrc}/web.png"/>
+                                    </div>
+                                    <div>
+                                        <a href="https://www.mttqhanoi.org.vn">www.mttqhanoi.org.vn</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="category" class="col-5">
+                            <div class="title">Danh mục</div>
+                            <div class="row list">
+                                <div class="col-6 d-flex flex-column gap-1">
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Trang chủ</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Liên hệ</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Phong trào thi đua yêu nước</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Thi đua - Khen thưởng</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Thư viện video</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Lịch công tác tuần</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Hộp thư góp ý</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 d-flex flex-column gap-1">
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Giới thiệu</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Tuyên truyền - Vận động</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Dân tộc - Tôn giáo</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Tin tức liên quan</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Thư viện ảnh</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Trang vàng Việt Nam</a>
+                                    </div>
+                                    <div class="link d-flex align-items-center gap-2">
+                                        <i class="fa fa-angle-right fw-bold"/>
+                                        <a href="/">Các tài liệu liên quan</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row copyright py-2" style="background: #feaa0a">
+                        <div class="col-8">
+                            Copyright © 2006 - 2025 Mặt trận Tổ quốc Việt Nam - Thành phố Hà Nội
+                        </div>
+                        <div class="col-4 d-flex gap-3 justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="/bms_news_portal/static/src/images/online.png" style="height: 14px"/>
+                                <span>Đang online: 100</span>
+                            </div>
+                            <div>
+                                Tổng truy cập: <t t-esc="f'{website.visit_count: ,}'.replace(',', '.')"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
