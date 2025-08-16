@@ -25,6 +25,13 @@
   color: $color
 }
 
+@mixin limited-line($number-of-line) {
+  display: -webkit-box;
+  -webkit-line-clamp: $number-of-line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 #fatherland-front-header {
   //max-width: 1170px !important;
 
@@ -112,6 +119,8 @@
     .menu:hover ul {
       display: block;
       border-radius: 0;
+      border: none;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
       overflow: hidden;
       animation: revealDown 0.3s ease forwards;
       top: 120%;
@@ -348,7 +357,8 @@
 
 .s_blog_post_latest_news_2 .dynamic_snippet_template .col-3,
 .s_blog_post_video_library .dynamic_snippet_template .col-4:not(#video-library .col-4),
-.s_blog_post_image_library .dynamic_snippet_template .col-4:not(#image-library .col-4) {
+.s_blog_post_image_library .dynamic_snippet_template .col-4:not(#image-library .col-4),
+{
   width: 100%;
 }
 
@@ -417,10 +427,7 @@
       a {
         @include link-style();
         @include font-style(ArialBold);
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        @include limited-line(1);
       }
     }
   }
@@ -449,10 +456,7 @@
     .sub-video-title {
       @include font-style(Arial, 14px);
       @include link-style();
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      @include limited-line(3)
     }
   }
 
@@ -485,5 +489,83 @@
       transform: scale(1.1);
       opacity: 0
     }
+  }
+}
+
+#image-library {
+  background: #fdf4ea;
+
+  .image-library-title {
+    background: #ffe4c4;
+    border-top: solid 4px #feae14;
+
+    a {
+      @include link-style();
+      display: inline-block;
+      @include font-style(UtmBebas, 21px);
+      padding: 0 15px 0 15px
+    }
+  }
+
+  .main-image {
+    .main-image-image-container {
+      position: relative;
+
+      .main-image-image {
+        display: block;
+        height: 160px;
+        width: 100%;
+        background-size: cover;
+      }
+    }
+
+
+    .main-image-title-container {
+      a {
+        @include link-style();
+        @include font-style(ArialBold);
+        @include limited-line(2);
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .sub-image {
+    .sub-image-image-container {
+      position: relative;
+
+      .sub-image-image {
+        display: block;
+        height: 75px;
+        width: 100%;
+        background-size: cover;
+      }
+    }
+
+    .sub-image-title {
+      @include limited-line(3);
+      @include font-style(Arial);
+      @include link-style()
+    }
+
+  }
+
+  .sub-image-title:hover, .main-image-title-container a:hover,
+  .image-library-title a:hover {
+    color: #93080a;
+  }
+
+  .main-image-image-container::after,
+  .sub-image-image-container::after {
+    content: "";
+    position: absolute;
+    bottom: 9px;
+    left: 9px;
+    width: 22px;
+    height: 18px;
+    background: url('/bms_news_portal/static/src/images/picture.png') no-repeat;
+    background-size: 100% 100%;
+    z-index: 2;
+    pointer-events: none;
   }
 }

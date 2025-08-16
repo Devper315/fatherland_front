@@ -64,10 +64,10 @@
     </template>
 
     <template id="dynamic_filter_template_blog_post_video_library" name="Thư viện video">
-        <div id="video-library" class="w-100">
+        <div id="video-library">
             <t t-set="main_video" t-value="records[0]['_record']"/>
             <div class="video-library-title pb-2">
-                <a t-attf-href="/blog/#{main_video.blog_id.id}">Thư viện video</a>
+                <a t-attf-href="/blog/#{main_video.blog_id.id}" t-esc="main_video.blog_id.name"/>
             </div>
             <div class="main-video">
                 <t t-set="main_video_link" t-valuef="/blog/#{main_video.blog_id.id}/#{main_video.id}"/>
@@ -117,7 +117,40 @@
 
     <template id="dynamic_filter_template_blog_post_image_library" name="Thư viện hình ảnh">
         <div id="image-library">
+            <t t-set="main_image" t-value="records[0]['_record']"/>
+            <div class="image-library-title">
+                <a t-attf-href="/blog/#{main_image.blog_id.id}" t-esc="main_image.blog_id.name"/>
+            </div>
+            <div class="main-image p-3">
+                <t t-set="main_image_link" t-valuef="/blog/#{main_image.blog_id.id}/#{main_image.id}"/>
+                <t t-set="_cp" t-value="json.loads(main_image.cover_properties)"/>
+                <div class="main-image-image-container">
+                    <a class="main-image-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                       t-att-title="main_image.name" t-att-href="main_image_link"/>
+                </div>
 
+                <div class="main-image-title-container mt-2">
+                    <a t-att-title="main_image.name" t-att-href="main_image_link" t-esc="main_image.name"/>
+                </div>
+            </div>
+            <div class="sub-images row mx-0">
+                <t t-set="index" t-value="0"/>
+                <t t-foreach="records[1:3]" t-as="sub_image_data">
+                    <t t-set="sub_image" t-value="sub_image_data['_record']"/>
+                    <t t-set="sub_image_link" t-valuef="/blog/#{sub_image.blog_id.id}/#{sub_image.id}"/>
+                    <t t-set="_cp" t-value="json.loads(sub_image.cover_properties)"/>
+                    <div t-attf-class="col-6 sub-image #{'pe-1' if index == 0 else 'ps-1'}">
+                        <div class="sub-image-image-container">
+                            <a class="sub-image-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                               t-att-title="sub_image.name" t-att-href="sub_image_link"/>
+                        </div>
+                        <a class="sub-image-title mt-2" t-att-title="sub_image.name" t-att-href="sub_image_link"
+                           t-esc="sub_image.name"/>
+                    </div>
+                    <t t-set="index" t-value="index + 1"/>
+                </t>
+
+            </div>
         </div>
     </template>
 </odoo>
