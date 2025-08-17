@@ -4,7 +4,7 @@
         <template id="main_snippets_9_3" inherit_id="website.snippets">
             <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
                 <t t-snippet="bms_news_portal.block_shared_snippet"
-                   t-thumbnail="/bms_news_portal/static/src/imgages/project_image.png"/>
+                   t-thumbnail="/bms_news_portal/static/src/images/project_image.png"/>
             </xpath>
         </template>
 
@@ -23,6 +23,74 @@
             </section>
         </template>
 
+        <template id="sidebar_sub_box" name="Khối nhỏ trong sidebar">
+            <section>
+                <div id="sidebar-sub-box">
+                    <a class="d-block" href="/" target="_blank">
+                        <div class="d-flex gap-2 align-items-center">
+                            <img t-attf-src="/bms_news_portal/static/src/images/#{image_file}"/>
+                            <span t-esc="title"/>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </template>
+
+        <template id="directive_document_snippet" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.directive_document_snippet_template"
+                   t-thumbnail="/bms_news_portal/static/src/images/word_icon.png"/>
+            </xpath>
+        </template>
+
+        <template id="directive_document_snippet_template" name="Văn bản hướng dẫn">
+            <t t-call="bms_news_portal.sidebar_sub_box">
+                <t t-set="image_file" t-value="'word_icon.png'"/>
+                <t t-set="title" t-value="'Văn bản chỉ đạo hướng dẫn'"/>
+            </t>
+        </template>
+
+        <template id="weekly_work_schedule_snippet" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.weekly_work_schedule_snippet_template"
+                   t-thumbnail="/bms_news_portal/static/src/images/calendar.png"/>
+            </xpath>
+        </template>
+
+        <template id="weekly_work_schedule_snippet_template" name="Lịch công tác tuần">
+            <t t-call="bms_news_portal.sidebar_sub_box">
+                <t t-set="image_file" t-value="'calendar.png'"/>
+                <t t-set="title" t-value="'Lịch công tác tuần'"/>
+            </t>
+        </template>
+
+        <template id="suggestion_box_snippet" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.suggestion_box_snippet_template"
+                   t-thumbnail="/bms_news_portal/static/src/images/suggestion_box.png"/>
+            </xpath>
+        </template>
+
+        <template id="suggestion_box_snippet_template" name="Hòm thư góp ý">
+            <t t-call="bms_news_portal.sidebar_sub_box">
+                <t t-set="image_file" t-value="'suggestion_box.png'"/>
+                <t t-set="title" t-value="'Hòm thư góp ý'"/>
+            </t>
+        </template>
+
+        <template id="related_document_snippet" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.related_document_snippet_template"
+                   t-thumbnail="/bms_news_portal/static/src/images/related_document.png"/>
+            </xpath>
+        </template>
+
+        <template id="related_document_snippet_template" name="Tài liệu liên quan">
+            <t t-call="bms_news_portal.sidebar_sub_box">
+                <t t-set="image_file" t-value="'related_document.png'"/>
+                <t t-set="title" t-value="'Tài liệu liên quan'"/>
+            </t>
+        </template>
 
     </data>
 </odoo>

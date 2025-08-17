@@ -3,7 +3,6 @@
     <template id="dynamic_filter_template_blog_post_latest_news_2" name="Blog Card tin tức 2">
         <div id="latest-news-2" class="container-fluid">
             <t t-set="main_blog" t-value="records[0]['_record']"/>
-            <!--            <span t-esc="records[0]"/>-->
             <t t-set="sub_blog_datas" t-value="records[1:6]"/>
             <div class="latest-news-header">
                 <div class="mb-2">
@@ -20,7 +19,8 @@
                     <t t-set="main_blog_link" t-valuef="blog/#{main_blog.blog_id.id}/#{main_blog.id}"/>
                     <t t-set="main_blog_create_date" t-value="main_blog.create_date.strftime('%d/%m/%Y')"/>
                     <div style="height: 270px; overflow:hidden">
-                        <a class="main-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                        <a class="main-image"
+                           t-attf-style="background: #{_cp.get('background-image')} center/cover"
                            t-att-title="main_blog.name" t-att-href="main_blog_link"/>
                     </div>
                     <a class="main-title" t-esc="main_blog.name" t-att-title="main_blog.name"
@@ -43,7 +43,8 @@
                         <div class="sub-blog">
                             <div class="d-flex gap-2">
                                 <div class="sub-image-container">
-                                    <a class="sub-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                                    <a class="sub-image"
+                                       t-attf-style="background: #{_cp.get('background-image')} center/cover"
                                        t-att-title="sub_blog.name" t-att-href="sub_blog_link"/>
                                 </div>
                                 <div class="sub-title">
@@ -73,7 +74,8 @@
                 <t t-set="main_video_link" t-valuef="/blog/#{main_video.blog_id.id}/#{main_video.id}"/>
                 <t t-set="_cp" t-value="json.loads(main_video.cover_properties)"/>
                 <div class="main-video-image-container">
-                    <a class="main-video-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                    <a class="main-video-image"
+                       t-attf-style="background: #{_cp.get('background-image')} center/cover"
                        t-att-title="main_video.name" t-att-href="main_video_link"/>
                     <a t-att-href="main_video_link">
                         <div class="main-video-icon">
@@ -95,7 +97,7 @@
                         <div class="col-5 pe-0">
                             <div class="sub-video-image-container">
                                 <a class="sub-video-image"
-                                   t-attf-style="background-image: #{_cp.get('background-image')}"
+                                   t-attf-style="background: #{_cp.get('background-image')} center/cover"
                                    t-att-title="sub_video.name" t-att-href="sub_video_link"/>
                                 <a t-att-href="sub_video_link">
                                     <div class="sub-video-icon">
@@ -125,7 +127,8 @@
                 <t t-set="main_image_link" t-valuef="/blog/#{main_image.blog_id.id}/#{main_image.id}"/>
                 <t t-set="_cp" t-value="json.loads(main_image.cover_properties)"/>
                 <div class="main-image-image-container">
-                    <a class="main-image-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                    <a class="main-image-image"
+                       t-attf-style="background: #{_cp.get('background-image')} center/cover"
                        t-att-title="main_image.name" t-att-href="main_image_link"/>
                 </div>
 
@@ -141,7 +144,8 @@
                     <t t-set="_cp" t-value="json.loads(sub_image.cover_properties)"/>
                     <div t-attf-class="col-6 sub-image #{'pe-1' if index == 0 else 'ps-1'}">
                         <div class="sub-image-image-container">
-                            <a class="sub-image-image" t-attf-style="background-image: #{_cp.get('background-image')}"
+                            <a class="sub-image-image"
+                               t-attf-style="background: #{_cp.get('background-image')} center/cover"
                                t-att-title="sub_image.name" t-att-href="sub_image_link"/>
                         </div>
                         <a class="sub-image-title mt-2" t-att-title="sub_image.name" t-att-href="sub_image_link"
@@ -153,4 +157,5 @@
             </div>
         </div>
     </template>
+
 </odoo>
