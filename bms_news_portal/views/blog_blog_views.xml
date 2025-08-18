@@ -25,7 +25,8 @@
                     </group>
                     <notebook>
                         <page string="Sub blogs">
-                            <field name="child_ids" domain="[('parent_id', '=', False), ('id', 'not in', [id, parent_id])]" widget="many2many">
+                            <field name="child_ids_domain" invisible="1"/>
+                            <field name="child_ids" widget="many2many" domain="child_ids_domain">
                                 <list create="0" editable="bottom">
                                     <field name="name" readonly="1"/>
                                 </list>

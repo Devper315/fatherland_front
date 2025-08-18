@@ -1,16 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="dynamic_filter_template_blog_post_latest_news_2" name="Blog Card tin tức 2">
-        <div id="latest-news-2" class="container-fluid">
+
+    <template id="dynamic_filter_template_blog_post_latest_news" name="Tin tức mới nhất">
+        <div id="portal-latest-news" class="container-fluid">
+            <t t-set="topic" t-value="records[0]['_record'].blog_id"/>
+            <div class="latest-news-body">
+                <div class="preview-blog-list-container">
+                    <div class="preview-blog-list" style="transform: translateX(-100%)">
+                        <t t-set="slides" t-value="[records[-1]] + records + [records[0]]"/>
+                        <t t-foreach="slides" t-as="blog_data">
+                            <t t-set="main_blog" t-value="blog_data['_record']"/>
+                            <div class="preview-blog">
+                                <t t-set="_cp" t-value="json.loads(main_blog.cover_properties)"/>
+                                <t t-set="main_blog_link" t-valuef="blog/#{main_blog.blog_id.id}/#{main_blog.id}"/>
+                                <t t-set="main_blog_create_date" t-value="main_blog.create_date.strftime('%d/%m/%Y')"/>
+                                <div class="preview-image-container">
+                                    <a class="preview-image"
+                                       t-attf-style="background: #{_cp.get('background-image')} center/cover"
+                                       t-att-title="main_blog.name" t-att-href="main_blog_link"/>
+                                </div>
+                                <a class="preview-title" t-esc="main_blog.name" t-att-title="main_blog.name"
+                                   t-att-href="main_blog_link"/>
+                                <div class="preview-teaser" t-esc="main_blog.teaser"/>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="btn-prev d-center">
+                        <i class="fa fa-chevron-left"/>
+                    </div>
+                     <div class="btn-next d-center">
+                        <i class="fa fa-chevron-right"/>
+                    </div>
+                </div>
+
+                <div class="blog-title-list">
+                    <header class="py-1">
+                        <a href="/">
+                            <img src="/bms_news_portal/static/src/images/iconNews.png" class="me-3"/>
+                            Tin tức mới nhất
+                        </a>
+                    </header>
+                    <div class="blog-title-list-body">
+                        <t t-set="index" t-value="0"/>
+                        <t t-foreach="records" t-as="blog_data">
+                            <t t-set="sub_blog" t-value="blog_data['_record']"/>
+                            <t t-set="sub_blog_link" t-valuef="blog/#{sub_blog.blog_id.id}/#{sub_blog.id}"/>
+                            <t t-set="_cp" t-value="json.loads(sub_blog.cover_properties)"/>
+                            <div class="sub-blog">
+                                <div class="d-flex gap-2 pt-1 pb-2 align-items-start">
+                                    <img src="/bms_news_portal/static/src/images/star.png" class="mt-1"/>
+                                    <div class="sub-title">
+                                        <a t-esc="sub_blog.name" t-att-href="sub_blog_link"
+                                           t-att-title="sub_blog.name"/>
+                                    </div>
+                                </div>
+                                <t t-if="index &lt; len(records) - 1">
+                                    <hr class="my-0"/>
+                                    <t t-set="index" t-value="index + 1"/>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div class="latest-news-footer"/>
+        </div>
+    </template>
+    <template id="dynamic_filter_template_blog_post_latest_news_by_topic" name="Tin tức theo chủ đề">
+        <div id="latest-news-by-topic" class="container-fluid">
             <t t-set="main_blog" t-value="records[0]['_record']"/>
-            <t t-set="sub_blog_datas" t-value="records[1:6]"/>
+            <t t-set="main_topic" t-value="main_blog.blog_id"/>
+            <t t-set="sub_blog_datas" t-value="records[1:7]"/>
             <div class="latest-news-header">
                 <div class="mb-2">
                     <a t-attf-href="/blog/#{main_blog.blog_id.id}" class="title" t-esc="main_blog.blog_id.name"/>
                 </div>
-                <div t-if="len(sub_blog_datas) > 5" class="btn-more">
-                    Thêm
-                    <i class="fa fa-angle-down fw-bold"/>
+                <div class="position-relative">
+                    <label t-if="len(main_topic.child_ids) &gt; 0" class="btn-more"
+                           t-attf-for="toggle-#{main_topic.id}">
+                        Thêm
+                        <i class="fa fa-angle-down fw-bold"/>
+                    </label>
+                    <input type="checkbox" t-attf-id="toggle-#{main_topic.id}" class="toggle d-none"/>
+                    <div class="sub-topic-group">
+                        <t t-set="index" t-value="0"/>
+                        <t t-foreach="main_topic.child_ids" t-as="topic">
+                            <t t-set="bg_color" t-value="'#ffe4c4' if index % 2 == 0 else '#ffefdd'"/>
+                            <a class="sub-topic-menu py-2 px-3" t-attf-style="background: #{bg_color}"
+                               t-esc="topic.name" t-att-title="topic.name" t-attf-href="blog/#{topic.id}"/>
+                            <t t-set="index" t-value="index + 1"/>
+                        </t>
+                    </div>
                 </div>
             </div>
             <div class="latest-news-body row my-3">
@@ -32,9 +112,9 @@
                         <t t-esc="main_blog.visits"/>
                         lượt xem
                     </div>
-                    <div class="teaser" t-esc="main_blog.teaser"/>
+                    <div class="main-teaser" t-esc="main_blog.teaser"/>
                 </div>
-                <div class="sub-blogs col-6 d-flex flex-column gap-2">
+                <div class="sub-blogs col-6 d-flex flex-column gap-2 ps-1">
                     <t t-set="index" t-value="0"/>
                     <t t-foreach="sub_blog_datas" t-as="sub_blog_data">
                         <t t-set="sub_blog" t-value="sub_blog_data['_record']"/>
@@ -60,7 +140,7 @@
                     </t>
                 </div>
             </div>
-            <div class="latest-news-footer mt-4"/>
+            <div class="latest-news-footer"/>
         </div>
     </template>
 
