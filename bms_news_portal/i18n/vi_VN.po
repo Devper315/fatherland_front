@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250810\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-17 06:09+0000\n"
+"PO-Revision-Date: 2025-08-17 06:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bms_news_portal
+#: model:ir.model.fields,field_description:bms_news_portal.field_blog_blog__parent_id
+msgid "Parent blog"
+msgstr "Blog cha"
+
+#. module: bms_news_portal
+#: model:ir.model.fields,field_description:bms_news_portal.field_blog_blog__child_ids
+#: model_terms:ir.ui.view,arch_db:bms_news_portal.inherit_view_blog_blog_form
+msgid "Sub blogs"
+msgstr "Blog phụ"
+
+#. module: bms_news_portal
+#: model:ir.model,name:bms_news_portal.model_website
+msgid "Website"
+msgstr "Trang web"
+

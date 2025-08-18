@@ -92,5 +92,30 @@
             </t>
         </template>
 
+        <template id="banner_snippet" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.banner_snippet_template"
+                   t-thumbnail="/bms_news_portal/static/src/images/banner_icon.png"/>
+            </xpath>
+        </template>
+
+        <template id="banner_snippet_template" name="Banner">
+            <section>
+                <div id="fatherland-front-banner">
+                    <img t-attf-src="/bms_news_portal/static/src/images/banner.png"/>
+                    <div class="banner-title">
+                        <h5>
+                            <strong>
+                                Chào mừng kỷ niệm 80 năm Ngày Cách mạng tháng Tám thành công
+                                (19/8/1945-19/8/2025) và
+                                Ngày Quốc khánh nước Cộng hòa xã hội chủ nghĩa Việt Nam
+                                (02/9/1945-02/9/2025)
+                            </strong>
+                        </h5>
+                    </div>
+                </div>
+            </section>
+        </template>
+
     </data>
 </odoo>

@@ -7,10 +7,11 @@
     'description': """
         Portal news
     """,
-    'depends': ['website'],
+    'depends': ['website', 'website_blog'],
     'data': [
         'views/header.xml',
         'views/footer.xml',
+        'views/blog_blog_views.xml',
         'views/blog_post.xml',
         'views/snippet_templates.xml',
     ],

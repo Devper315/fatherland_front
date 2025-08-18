@@ -132,7 +132,7 @@
                                 <span>Đang online: 100</span>
                             </div>
                             <div>
-                                Tổng truy cập: <t t-esc="f'{website.visit_count: ,}'.replace(',', '.')"/>
+                                Tổng truy cập: <t t-esc="'{:,}'.format(website.visit_count).replace(',' , '.')"/>
                             </div>
                         </div>
                     </div>
