@@ -2,8 +2,8 @@
 
 import publicWidget from '@web/legacy/js/public/public_widget';
 
-publicWidget.registry.portalLatestNews = publicWidget.Widget.extend({
-    selector: '#portal-latest-news',
+publicWidget.registry.portalVotingProduct = publicWidget.Widget.extend({
+    selector: '#fatherland-front-voting-product',
     events: {
         'click .btn-prev': 'onClickBtnPrev',
         'click .btn-next': 'onClickBtnNext',
@@ -12,8 +12,8 @@ publicWidget.registry.portalLatestNews = publicWidget.Widget.extend({
     init() {
         this._super.apply(this, arguments)
         this.currentIndex = 1
-        this.maxIndex = 7
-        const slides = $('.preview-blog-list')[0]
+        this.maxIndex = 4
+        const slides = $('.voting-product-list')[0]
         slides.addEventListener("transitionend", () => {
             if (this.currentIndex === this.maxIndex) {
                 slides.style.transition = "none";
@@ -27,7 +27,6 @@ publicWidget.registry.portalLatestNews = publicWidget.Widget.extend({
         })
         setInterval(this.onClickBtnNext.bind(this), 6000)
     },
-
 
     onClickBtnPrev() {
         if (this.currentIndex === 0) return
@@ -43,7 +42,7 @@ publicWidget.registry.portalLatestNews = publicWidget.Widget.extend({
 
 
     processSlideTransition() {
-        $('.preview-blog-list').css({
+        $('.voting-product-list').css({
             transition: 'transform 0.8s ease',
             transform: `translateX(-${100 * this.currentIndex}%)`
         })

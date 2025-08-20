@@ -117,5 +117,59 @@
             </section>
         </template>
 
+        <template id="voting_program_snippet" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.voting_program_snippet_template"
+                   t-thumbnail="/bms_news_portal/static/src/images/voting_program_icon.png"/>
+            </xpath>
+        </template>
+
+        <template id="voting_program_snippet_template" name="Chương trình bình chọn">
+            <section>
+                <div id="fatherland-front-voting-program">
+                    <a href="/">
+                        <img t-attf-src="/bms_news_portal/static/src/images/voting_program.png"/>
+                    </a>
+                </div>
+            </section>
+        </template>
+
+        <template id="voting_product_snippet" inherit_id="website.snippets">
+            <xpath expr="//snippets[@id='snippet_groups']//t[@snippet-group][last()]" position="before">
+                <t t-snippet="bms_news_portal.voting_product_snippet_template"
+                   t-thumbnail="/bms_news_portal/static/src/images/voting_program_icon.png"/>
+            </xpath>
+        </template>
+
+        <template id="voting_product_snippet_template" name="Sản phẩm bình chọn">
+            <section>
+                <div id="fatherland-front-voting-product">
+                    <header class="px-2">
+                        Sản phẩm bình chọn
+                    </header>
+                    <div class="voting-product-body">
+                        <div class="product-list-container">
+                            <div class="voting-product-list" style="transform: translateX(-100%)">
+                                <a class="product" href="/">
+                                    <img src="/bms_news_portal/static/src/images/video_library.jpg"/>
+                                    <div class="product-name">Bánh trung thu 1</div>
+                                </a>
+                                <a class="product" href="/">
+                                    <img src="/bms_news_portal/static/src/images/video_library.jpg"/>
+                                    <div class="product-name">Bánh trung thu 2</div>
+                                </a>
+                            </div>
+                            <div class="btn-prev d-center">
+                                <i class="fa fa-chevron-left"/>
+                            </div>
+                            <div class="btn-next d-center">
+                                <i class="fa fa-chevron-right"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
     </data>
 </odoo>

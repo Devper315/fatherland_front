@@ -121,6 +121,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-3 d-center">
+                            <div class="oe_structure"/>
+                        </div>
                     </div>
                     <div class="row copyright py-2" style="background: #feaa0a">
                         <div class="col-8">
